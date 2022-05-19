@@ -66,7 +66,7 @@ server.get("/", (req, res) => {
   res.send(
     `server is running, demo shop last added guitars ${
       Math.round(((Date.now() - lastUpdated) / 1000 / 60 / 60) * 100) / 100
-    } hours ago`
+    } hours ago, ${numberOfListings} listings`
   );
 });
 
