@@ -1,0 +1,25 @@
+{
+	"name": "demo-shop-checker",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"type": "module",
+	"dependencies": {
+		"@zacharyeggert/reverb-api": "^0.2.0",
+		"axios": "^0.27.2",
+		"dotenv": "^16.0.1",
+		"nodemon": "^2.0.16"
+	},
+	"scripts": {
+		"dev": "nodemon index.js",
+		"start": "node index.js"
+	},
+	"nodemonConfig": {
+		"watch": "index.js",
+		"ext": "js,json",
+		"ignore": [
+			"node_modules",
+			"data.json"
+		]
+	}
+}
