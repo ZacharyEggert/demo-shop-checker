@@ -17,9 +17,11 @@ const loopIntervalSeconds = parseInt(LOOP_INTERVAL_SECONDS) || 30;
 
 let numberOfListings;
 let previousNumberOfListings;
+let lastUpdated = new Date("2022-05-19T00:00:00.000Z");
 
 const alertNewListings = () => {
   console.log("new listings!");
+  lastUpdated = new Date();
   axios.post(
     "https://api.mynotifier.app",
     {
@@ -61,7 +63,11 @@ checkNewListings();
 const loop = setInterval(checkNewListings, 1000 * loopIntervalSeconds);
 
 server.get("/", (req, res) => {
-  res.send("server is running!");
+  res.send(
+    `server is running, demo shop last added guitars ${
+      Math.round(((Date.now() - lastUpdated) / 1000 / 60 / 60) * 100) / 100
+    } hours ago`
+  );
 });
 
 server.listen(parseInt(PORT) || 3000, () => {
