@@ -1,11 +1,14 @@
 import { ReverbApiClient } from "@zacharyeggert/reverb-api";
 import axios from "axios";
 import dotenv from "dotenv";
+import express from "express";
 import fs from "fs";
 
 dotenv.config();
 
-const { REVERB_API_KEY, MY_NOTIFIER_API_KEY, LOOP_INTERVAL_SECONDS } =
+const server = express();
+
+const { REVERB_API_KEY, MY_NOTIFIER_API_KEY, LOOP_INTERVAL_SECONDS, PORT } =
   process.env;
 
 const apiClient = new ReverbApiClient(REVERB_API_KEY);
@@ -56,3 +59,11 @@ const checkNewListings = async () => {
 checkNewListings();
 
 const loop = setInterval(checkNewListings, 1000 * loopIntervalSeconds);
+
+server.get("/", (req, res) => {
+  res.send("server is running!");
+});
+
+server.listen(parseInt(PORT) || 3000, () => {
+  console.log("listening on port", PORT);
+});

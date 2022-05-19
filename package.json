@@ -8,6 +8,7 @@
 		"@zacharyeggert/reverb-api": "^0.2.0",
 		"axios": "^0.27.2",
 		"dotenv": "^16.0.1",
+		"express": "^4.18.1",
 		"nodemon": "^2.0.16"
 	},
 	"scripts": {
